@@ -1,0 +1,18 @@
+/* Área da logo */
+.logo-container {
+    height: 80px; /* Altura da área da logo */
+    background-color: #f8f9fa; /* Cor de fundo para destacar */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-bottom: 1px solid #ddd; /* Linha inferior */
+}
+
+.logo-container img {
+    max-height: 60px; /* Altura máxima da logo */
+}
+
+/* Menu lateral */
+.nav {
+    margin-top: 20px; /* Espaçamento superior no menu */
+}

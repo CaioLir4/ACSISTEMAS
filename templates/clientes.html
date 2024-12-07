@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+
+{% block title %}Buscar Clientes{% endblock %}
+
+{% block content %}
+    <h1>Buscar Cliente</h1>
+
+    <!-- Formulário de Pesquisa -->
+    <form method="GET" action="/clientes" class="mb-3">
+        <div class="row">
+            <!-- Campo para pesquisa por Nome -->
+            <div class="col-md-4">
+                <label for="nome" class="form-label">Pesquisar por Nome:</label>
+                <input type="text" name="nome" id="nome" class="form-control" placeholder="Digite o nome">
+            </div>
+            <!-- Campo para pesquisa por CNPJ -->
+            <div class="col-md-4">
+                <label for="cnpj" class="form-label">Pesquisar por CNPJ:</label>
+                <input type="text" name="cnpj" id="cnpj" class="form-control" placeholder="Digite o CNPJ">
+            </div>
+            <!-- Botão de pesquisa -->
+            <div class="col-md-2 d-flex align-items-end">
+                <button type="submit" class="btn btn-primary">Pesquisar</button>
+            </div>
+        </div>
+    </form>
+
+    <!-- Lista de Clientes Encontrados -->
+    {% if clientes %}
+        <h3>Resultados encontrados:</h3>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nome</th>
+                    <th>CNPJ</th>
+                    <th>Ação</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for cliente in clientes %}
+                <tr>
+                    <td>{{ cliente.id }}</td>
+                    <td>{{ cliente.nome }}</td>
+                    <td>{{ cliente.cpf_cnpj }}</td>
+                    <td>
+                        <a href="{{ url_for('detalhes_cliente', id_cliente=cliente.id) }}" class="btn btn-info">Parcelas</a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <p>Nenhum cliente encontrado.</p>
+    {% endif %}
+{% endblock %}

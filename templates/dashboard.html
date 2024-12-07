@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+{% block title %}Dashboard{% endblock %}
+
+{% block content %}
+    <h1>Bem-vindo ao Dashboard</h1>
+
+    <div class="row">
+        <!-- Dashboard - Total de Clientes -->
+        <div class="col-md-3 mb-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Total de Clientes</h5>
+                    <p class="card-text">{{ total_clientes }}</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Dashboard - Total de Atendimentos Ativos -->
+        <div class="col-md-3 mb-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Total de Atendimentos Ativos</h5>
+                    <p class="card-text">{{ total_atendimentos_ativos }}</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Aqui você pode adicionar outros widgets para o dashboard -->
+        <div class="col-md-3 mb-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Outros Indicadores</h5>
+                    <p class="card-text">Informações adicionais</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Adicionar mais cards conforme necessário -->
+    </div>
+
+{% endblock %}

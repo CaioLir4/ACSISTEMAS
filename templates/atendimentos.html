@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+
+{% block title %}Registrar Atendimento{% endblock %}
+
+{% block content %}
+    <h1>Registrar Atendimento</h1>
+
+    <!-- Formulário de atendimento -->
+    <form method="POST">
+        <!-- Selecione o Cliente -->
+        <div class="form-group">
+            <label for="id_cliente">Cliente:</label>
+            <select name="id_cliente" id="id_cliente" class="form-control" required>
+                <option value="">Selecione o Cliente</option>
+                {% for cliente in clientes %}
+                    <option value="{{ cliente.id }}">{{ cliente.nome }}</option>
+                {% endfor %}
+            </select>
+        </div>
+
+        <!-- Selecione o Usuário -->
+        <div class="form-group">
+            <label for="id_usuario">Usuário:</label>
+            <select name="id_usuario" id="id_usuario" class="form-control" required>
+                <option value="">Selecione o Usuário</option>
+                {% for usuario in usuarios %}
+                    <option value="{{ usuario.id }}">{{ usuario.nome }}</option>
+                {% endfor %}
+            </select>
+        </div>
+
+        <!-- Selecione o Serviço -->
+        <div class="form-group">
+            <label for="id_servico">Serviço:</label>
+            <select name="id_servico" id="id_servico" class="form-control" required>
+                <option value="">Selecione o Serviço</option>
+                {% for servico in servicos %}
+                    <option value="{{ servico.id }}">{{ servico.nome }}</option>
+                {% endfor %}
+            </select>
+        </div>
+
+        <!-- Data do Atendimento -->
+        <div class="form-group">
+            <label for="data">Data do Atendimento:</label>
+            <input type="date" id="data" name="data" class="form-control" required>
+        </div>
+
+        <!-- Observação -->
+        <div class="form-group">
+            <label for="observacao">Observação:</label>
+            <textarea id="observacao" name="observacao" class="form-control" rows="4" cols="50"></textarea>
+        </div>
+        <br>
+        <button type="submit" class="btn btn-primary">Registrar Atendimento</button>
+    </form>
+
+{% endblock %}

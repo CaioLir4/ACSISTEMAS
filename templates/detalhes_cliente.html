@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+{% block title %}Detalhes do Cliente{% endblock %}
+
+{% block content %}
+    <h1>Detalhes do Cliente</h1>
+
+    <!-- Exibe as informações do cliente -->
+    <h3>{{ cliente.nome }}</h3>
+    <p><strong>CNPJ:</strong> {{ cliente.cpf_cnpj }}</p>
+    <p><strong>Cidade:</strong> {{ cliente.cidade }}</p>
+
+
+    <h4>Parcelas do Cliente:</h4>
+    <!-- Tabela de Parcelas -->
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Valor</th>
+                <th>Recebido</th>
+                <th>Data de Vencimento</th>
+                <th>Parcela</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% if parcelas %}
+                {% for parcela in parcelas %}
+                <tr>
+                    <td>{{ parcela.id }}</td>
+                    <td>{{ parcela.valor_original }}</td>
+                    <td>{{ parcela.valor_rec }}</td>
+                    <td>{{ parcela.vencimento.strftime('%d/%m/%Y') }}</td>
+                    <td>{{ parcela.parcela }}</td>
+                    <td>{{ parcela.status }}</td>
+                </tr>
+                {% endfor %}
+            {% else %}
+                <tr>
+                    <td colspan="4">Nenhuma parcela encontrada para este cliente.</td>
+                </tr>
+            {% endif %}
+        </tbody>
+    </table>
+{% endblock %}
